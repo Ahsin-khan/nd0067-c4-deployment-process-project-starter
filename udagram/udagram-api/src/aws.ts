@@ -3,23 +3,23 @@ import { config } from "./config/config";
 
 //Credentials are auto set according to the documentation https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html and the default profile is "Default anyway"
 
-// export const s3 = new AWS.S3({
-//   signatureVersion: "v4",
-//   region: config.aws_region,
-//   params: { Bucket: config.aws_media_bucket },
-// });
-
-const credentials = new AWS.Credentials({
-  accessKeyId: 'AKIAXSEIIWI3BFR3T46X',
-  secretAccessKey: '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',
-  sessionToken: 'hardcode-token'
-})
 export const s3 = new AWS.S3({
   signatureVersion: "v4",
   region: config.aws_region,
   params: { Bucket: config.aws_media_bucket },
-  credentials: credentials
 });
+
+// const credentials = new AWS.Credentials({
+//   accessKeyId: 'AKIAXSEIIWI3BFR3T46X',
+//   secretAccessKey: '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',
+//   sessionToken: 'hardcode-token'
+// })
+// export const s3 = new AWS.S3({
+//   signatureVersion: "v4",
+//   region: config.aws_region,
+//   params: { Bucket: config.aws_media_bucket },
+//   credentials: credentials
+// });
 
 // Generates an AWS signed URL for retrieving objects
 export function getGetSignedUrl(key: string): string {
